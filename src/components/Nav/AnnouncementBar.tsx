@@ -10,7 +10,7 @@ const AnnouncementBar = ({ setShowBanner }: Props) => {
       <span>
         Sign up and get&nbsp;
         <strong>20% off</strong>&nbsp;your first order:&nbsp;
-        <a href="/signup" className="underline font-medium">
+        <a href="/sign-in" className="underline font-medium">
           Sign Up Now
         </a>
       </span>
