@@ -1,30 +1,16 @@
-import axios from "axios";
-import { Node_API_URL } from "../constants/Server.ts";
-import { ContentType } from "../constants/Server.ts";
 import type { UniqueIdentifier } from "@dnd-kit/core";
+import api from "./ApiClient.ts";
 
 export const getAllProductNotInSection = async (sectionId: string) => {
-  return axios.get(`${Node_API_URL}/product/not-in-section/${sectionId}`, {
-    headers: {
-      "Content-Type": ContentType.Json,
-    },
-  });
+  return api.get(`/product/not-in-section/${sectionId}`);
 };
 
 export const addProductsToSection = async (
   sectionId: UniqueIdentifier,
   productIds: UniqueIdentifier[]
 ) => {
-  const payload = {
-    sectionId,
-    productIds,
-  };
-
-  return axios.post(`${Node_API_URL}/product/add-to-section`, payload, {
-    headers: {
-      "Content-Type": ContentType.Json,
-    },
-  });
+  const payload = { sectionId, productIds };
+  return api.post("/product/add-to-section", payload);
 };
 
 export const deleteProductsFromSection = async (
@@ -32,10 +18,5 @@ export const deleteProductsFromSection = async (
   productIds: UniqueIdentifier[]
 ) => {
   const payload = { sectionId, productIds };
-  return axios.delete(`${Node_API_URL}/product/remove-from-section`, {
-    data: payload,
-    headers: {
-      "Content-Type": ContentType.Json,
-    },
-  });
+  return api.delete("/product/remove-from-section", { data: payload });
 };
